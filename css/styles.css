@@ -4,27 +4,13 @@
     box-sizing: border-box;
 }
 
-body {
-    padding-bottom: 60px;
-}
-
-header {
-
-    background-color: red;
-    text-align: center;
-    height: 200px;
-
-
-}
-
 header {
 
     text-align: center;
     height: 230px;
 
 }
-
-header img {
+header img{
     width: 100%;
     height: 85%;
     padding: 0;
@@ -40,7 +26,14 @@ section {
 
 footer {
     background-color: red;
-}
+    position: fixed;
+    bottom: 0;
+    width: 70%;
+    background-color: black;
+    color: white;
+    text-align: center;
+ }
+
 
 
 
@@ -125,14 +118,4 @@ svg {
 .form-submit:hover {
     background-color: black;
     color: white;
-}
-
-footer {
-
-    position: fixed;
-    bottom: 0;
-    width: 70%;
-    background-color: black;
-    color: white;
-    text-align: center;
 }
