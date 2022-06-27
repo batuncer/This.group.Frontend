@@ -7,16 +7,23 @@ const renderPosts = () => {
 
             renderPost.innerHTML += `
             
-            <div>
+            <div class="posts-box">
                 <div>
                     <h3>${data.title}</h3>
                     <span>${data.date}</span>
                     <p>${data.body}</p>
                     <iframe src="${data.gif}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
-                <div>
-                   ${data.comments}
+                <div class="post-btns">
+                    <div class="post-btns-icons">
+                        <span class="post-icons" id="like">👍</span>
+                        <span class="post-icons" id="smile">😊</span>
+                        <span class="post-icons" id="crysmile">😂</span>
+                    </div>
+
+                    <div class="post-btns-comment">Comments</div>
                 </div>
+               
             </div>
 
 
