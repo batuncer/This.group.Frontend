@@ -12,7 +12,7 @@ header {
     background-color: red;
     text-align: center;
     height: 200px;
-    
+
 }
 
 section {
@@ -25,8 +25,58 @@ footer {
     background-color: red;
     position: absolute;
     bottom: 0;
-    width: 71vw;
+
     margin-left: 4%;
     margin-right: auto;
-  
+
+}
+
+
+
+/* FORM STYLES */
+
+.right-box {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    position: relative;
+    z-index: 0;
+}
+
+.form-box{
+    padding: 2px;
+}
+
+.form-box-inputs {
+    margin: 0;
+}
+
+.form-box-inputs input {
+    height: 2.3rem;
+}
+
+.form-box-inputs input, textarea {
+    margin: 3px 0;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.form-box-btns {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+
 }
