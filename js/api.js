@@ -28,7 +28,7 @@ const renderPosts = () => {
 }
 
 
-function submitPost(e) {
+const submitPost = (e) => {
 
     e.preventDefault();
 
@@ -41,7 +41,7 @@ function submitPost(e) {
     const yyyy = today.getFullYear();
 
     const newToday = dd + '/' + mm + '/' + yyyy;
-   
+
 
     fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
         method: 'POST',
@@ -50,13 +50,16 @@ function submitPost(e) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 5,
+            "id": 6,
             "date": `"${newToday}"`,
             "title": `${title.value}`,
             "body": `${body.value}`
         }),
     }).then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            location.reload()
+        })
 
 
 
