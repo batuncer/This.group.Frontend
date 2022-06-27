@@ -9,12 +9,12 @@ body {
 }
 
 header {
-    
+
     background-color: red;
     text-align: center;
     height: 200px;
 
-    
+
 }
 
 header {
@@ -23,7 +23,8 @@ header {
     height: 230px;
 
 }
-header img{
+
+header img {
     width: 100%;
     height: 85%;
     padding: 0;
@@ -124,12 +125,14 @@ svg {
 .form-submit:hover {
     background-color: black;
     color: white;
+}
 
-    
-   position: fixed;
-   bottom: 0;
-   width: 70%;
-   background-color: black;
-   color: white;
-   text-align: center;
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 78%;
+    background-color: black;
+    color: white;
+    text-align: center;
 }
