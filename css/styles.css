@@ -5,7 +5,6 @@
 }
 
 body {
-<<<<<<< HEAD
     padding-bottom: 60px;
 }
 
@@ -15,9 +14,7 @@ header {
     text-align: center;
     height: 200px;
 
-=======
     
->>>>>>> baki
 }
 
 header {
@@ -41,7 +38,6 @@ section {
 }
 
 footer {
-<<<<<<< HEAD
     background-color: red;
 }
 
@@ -128,7 +124,6 @@ svg {
 .form-submit:hover {
     background-color: black;
     color: white;
-=======
 
     
    position: fixed;
@@ -137,5 +132,4 @@ svg {
    background-color: black;
    color: white;
    text-align: center;
->>>>>>> baki
 }
