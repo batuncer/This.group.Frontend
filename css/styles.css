@@ -1,11 +1,11 @@
-* {
-    margin: 3% 5%;
+html, body {
+    margin: 0;
     /* padding: 5px; */
     box-sizing: border-box;
 }
 
-
 header {
+    margin: 2% 3%;
     text-align: center;
     height: fit-content;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -18,8 +18,13 @@ header img {
     margin: 0;
 }
 
+.container {
+    margin: 2% 3%;
+}
+
 .content {
     display: grid;
+    margin: 2% 3%;
     grid-template-columns: 60% 40%;
     padding: 0;
 }
@@ -103,7 +108,7 @@ textarea:hover {
 
 .giphy-btn {
     padding: 0;
-    margin: 0;
+    margin: 2px;
 }
 
 svg {
@@ -111,7 +116,7 @@ svg {
     margin: 0;
 }
 
-.form-submit {
+.form-btns {
     background-color: transparent;
     color: black;
     border: 3px solid black;
@@ -124,7 +129,7 @@ svg {
 }
 
 
-.form-submit:hover {
+.form-btns:hover {
     background-color: black;
     color: white;
 }

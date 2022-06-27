@@ -67,8 +67,6 @@ const submitPost = (e) => {
 
 
 exports = {
-
     renderPosts,
     submitPost
-
 } 
