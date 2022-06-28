@@ -30,7 +30,7 @@ section {
 }
 
 aside {
-    background-color: #5d689c;
+    background-color: rgb(255, 183, 40);
     color: whitesmoke;
     padding: 3rem;
     margin: 0 1rem;
@@ -42,7 +42,7 @@ aside {
 /* FORM STYLES */
 
 .right-box {
-    background-color: #7986CB;
+    background-color: rgb(255, 183, 40);
     display: flex;
     flex-basis: auto;
     flex-direction: column;
@@ -89,7 +89,7 @@ textarea {
 
 .form-box-inputs input:hover,
 textarea:hover {
-    border: 3px solid rgb(84, 84, 109);
+    border: 3px solid rgb(255, 183, 40);
     transition-duration: 0.4s;
 }
 
@@ -102,8 +102,11 @@ textarea:hover {
 }
 
 .giphy-btn {
+    display: flex;
+    flex-direction: row;
     padding: 0;
     margin: 0;
+    height: 3em;
 }
 
 svg {
@@ -140,7 +143,7 @@ svg {
     margin: 1rem 0;
     padding: 2px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
-    background-color: #7986CB;
+    background-color: rgb(255, 183, 40);
 }
 
 .post-btns {
