@@ -47,9 +47,11 @@ form.addEventListener('submit', submitPost)
 // COMMENTS SESSION 
 postBox.addEventListener('click', (e) => {
     console.log(e.target)
-    if (e.target.className === 'post-btns-comment') {
+    if (e.target.className === 'post-btns-comment' && e.target.style.display === 'none') {
         const postId = e.target.id
         renderComments(postId)
+    } else {
+        e.target.style.display = 'block'
     }
 })
 

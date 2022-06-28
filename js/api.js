@@ -22,9 +22,7 @@ const renderPosts = async () => {
 
                     <div id="${data.id}" class="post-btns-comment">Comments</div>
                 </div>
-                <div id="render_comments_${data.id}" class="mt-4 mb-2 bg-light">
-               
-                </div>
+                <div id="render_comments_${data.id}" class="mt-4 mb-2 bg-light" style="display: none"></div>
             </div>`
         }))
 }
@@ -69,16 +67,16 @@ const submitPost = (e) => {
 
 const renderComments = (post_id) => {
 
-
+    const commentBlock = document.querySelector(`#render_comments_${post_id}`);
+    commentBlock.innerHTML = ''
 
     fetch(`https://community-blog-server.herokuapp.com/api/blog/${post_id}`)
         .then(response => response.json())
         .then(res => res.comments.forEach(commentData => {
         
-            const commentBlock = document.querySelector(`#render_comments_${post_id}`);
             commentBlock.innerHTML += `
             
-            <h4> ${commentData.title}</h3>
+            <h4>${commentData.title}</h3>
             <span> ${commentData.date}</span>
             <p> ${commentData.body}</p>
            
