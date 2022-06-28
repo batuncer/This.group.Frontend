@@ -11,7 +11,7 @@ const renderPosts = async () => {
                     <h3>${data.title}</h3>
                     <span>${data.date}</span>
                     <p>${data.body}</p>
-                    <iframe src="${data.gif}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <img class="giphy-img mb-2 mt-2 gifima" type="image" src="${data.gif}" width="100%" height="350">
                 </div>
                 <div class="post-btns">
                     <div class="post-btns-icons">
@@ -36,13 +36,16 @@ const submitPost = (e) => {
 
     const title = document.getElementById("title")
     const body = document.getElementById("post-context")
+    const gif = document.querySelector('.giphy-img').src
 
     const today = new Date();
+    const d = new Date()
+    const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
 
-    const newToday = dd + '/' + mm + '/' + yyyy;
+    const newToday = hours +" "+ yyyy + '-' + mm + '-' + dd;
 
 
     fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
@@ -52,15 +55,15 @@ const submitPost = (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 6,
+            "id": 7,
             "date": `"${newToday}"`,
             "title": `${title.value}`,
-            "body": `${body.value}`
+            "body": `${body.value}`,
+            "gif": `${gif}`
         }),
     }).then(res => res.json())
         .then(res => {
             console.log(res)
-            location.reload()
         })
 }
 
@@ -85,7 +88,7 @@ const renderComments = (post_id) => {
 }
 
 const commentForm = () => {
-    
+
 }
 
 
