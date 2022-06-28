@@ -1,0 +1,23 @@
+{
+  "name": "this.group.frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batuncer/This.group.Frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/batuncer/This.group.Frontend/issues"
+  },
+  "homepage": "https://github.com/batuncer/This.group.Frontend#readme",
+  "dependencies": {
+    "jest": "^28.1.1"
+  }
+}

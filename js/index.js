@@ -35,8 +35,7 @@ submitGifSearch.addEventListener('click', (e) => {
         })
 })
 
-
 renderPosts()
-form.addEventListener('submit', submitPost)
+form.addEventListener('submit', submitPost);
 
 
