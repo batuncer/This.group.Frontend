@@ -144,7 +144,7 @@ svg {
 
 .posts-box {
     margin: 1rem 0;
-    padding: 2px;
+    padding: 12px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
     background-color: #7986CB;
 }
