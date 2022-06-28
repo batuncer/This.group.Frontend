@@ -60,9 +60,6 @@ const submitPost = (e) => {
             console.log(res)
             location.reload()
         })
-
-
-
 }
 
 
