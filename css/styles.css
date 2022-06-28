@@ -10,6 +10,7 @@ header {
     text-align: center;
     height: fit-content;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 15px;
 }
 
 header img {
@@ -17,6 +18,7 @@ header img {
     height: 85%;
     padding: 0;
     margin: 0;
+    border-radius: 15px;
 }
 
 .container {
@@ -36,12 +38,17 @@ section {
 }
 
 aside {
-    background-color: rgb(255, 183, 40);
+    background-color: rgb(62, 62, 62);
     color: whitesmoke;
     padding: 3rem;
     margin: 0 1rem;
     margin-right: 0;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
+    height: 700px;
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 6px; 
+    border-radius: 15px;
 
 }
 
@@ -66,6 +73,7 @@ aside {
     position: relative;
     z-index: 0;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
+    border-radius: 15px;
 }
 
 .posts {
@@ -75,14 +83,20 @@ aside {
 
 .form-box {
     padding: 2px;
+   
 }
 
 .form-box-inputs {
-    margin: 0;
+    margin: 10px;
+    
+}
+#post-context{
+    margin-top: 15px;
 }
 
 .form-box-inputs input {
     height: 2.3rem;
+  
 }
 
 .form-box-inputs input,
@@ -90,9 +104,19 @@ textarea {
     margin: 3px 0;
     width: 100%;
     border: 3px solid black;
-    border-radius: 8px;
+    border-radius: 18px;
+    border-style: none;
+    
+   
 }
-
+#post-context:focus-visible {
+    border: none !important;
+    outline: none;
+}
+[type="text"]:focus-visible {
+    border: none !important;
+    outline: none;
+}
 .form-box-inputs input:hover,
 textarea:hover {
     border: 3px solid rgb(255, 183, 40);

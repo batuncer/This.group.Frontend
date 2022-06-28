@@ -70,11 +70,12 @@ const submitPost = (e) => {
     const body = document.getElementById("post-context")
     const gifUrl = document.getElementById("gifImageSrc").getAttribute('src')
     const today = new Date();
+    var hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
 
-    const newToday = dd + '/' + mm + '/' + yyyy;
+    const newToday = hours +" "+ dd + '/' + mm + '/' + yyyy;
 
 
     fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
