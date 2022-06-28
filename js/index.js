@@ -37,8 +37,6 @@ submitGifSearch.addEventListener('click', (e) => {
         })
 })
 
-renderPosts()
-form.addEventListener('submit', submitPost);
 // RENDER ALL POSTS AS SOON AS HTML STARTS
 renderPosts()
 
