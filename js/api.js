@@ -8,7 +8,7 @@ const renderPosts = async () => {
 
             renderPost.innerHTML += `
             
-            <div class="posts-box">
+            <div id="${data.id}" class="posts-box">
                 <div>
                     <h3>${data.title}</h3>
                     <span>${data.date}</span>
@@ -17,14 +17,14 @@ const renderPosts = async () => {
                 </div>
                 <div class="post-btns mb-3 mt-3">
                     <div class="post-btns-icons">
-                        <span class="post-icons" id="like">👍</span>
-                        <span class="post-icons" id="smile">😊</span>
-                        <span class="post-icons" id="crysmile">😂</span>
+                        <span class="post-icons likes" id="${data.id}">👍</span>
+                        <span class="post-icons smile" id="${data.id}">😊</span>
+                        <span class="post-icons happy" id="${data.id}">😂</span>
                     </div>
 
                     <div id="${data.id}" class="post-btns-comment">Comments</div>
                 </div>
-                <div id="render_comments_${data.id}" class="mt-4 mb-2 bg-light"></div>
+                <div id="render_comments_${data.id}" class="mt-4 mb-2"></div>
             </div>`
         }))
 }
@@ -67,13 +67,91 @@ const submitPost = (e) => {
         })
 }
 
+const submitCommentPost = (post_id) => {
 
+    const commentTitle = document.querySelector('#comment_title').value
+    const commentBody = document.querySelector('#comment_body').value
+
+    const today = new Date();
+    const d = new Date()
+    const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
+    const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
+
+    fetch("https://community-blog-server.herokuapp.com/api/createBlogComment", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "id": 1.3,
+            "date": `"${newToday}"`,
+            "title": `${commentTitle}`,
+            "body": `${commentBody}`
+        }),
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
+
+}
+
+const submitEmojisReactions = (icon, postId) => {
+
+    fetch("https://community-blog-server.herokuapp.com/api/updateEmoji", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "id": postId,
+            "emoji": {
+                "likes": 3,
+            }
+        }),
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
+
+}
+
+//GENERATE FORM IN RENDER COMMENTS
+const commentForm = (post_id) => {
+
+    return `
+            <div>
+                <div>Make a comment!</div>
+                <div>
+                    <form id="">
+                        <div class="">
+                            <div class="form-box-inputs">
+                                <input id="comment_title" class="form-control" type="text" name="title" placeholder="Title"/>
+                                <br>
+                                <textarea id="comment_body" class="form-control" name="postarea" rows="4" placeholder="Comment here!"></textarea>
+                            </div>
+                            <div class="">
+                                <div class="">
+                                    <buttom id="${post_id}" class="comment-post" type="submit">Comment</buttom>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>`
+}
 
 // RENDER COMMENTS BELOW EACH POST
 const renderComments = (post_id) => {
 
     const commentBlock = document.querySelector(`#render_comments_${post_id}`);
     commentBlock.innerHTML = ''
+    commentBlock.innerHTML = commentForm(post_id)
 
     fetch(`https://community-blog-server.herokuapp.com/api/blog/${post_id}`)
         .then(response => response.json())
@@ -81,7 +159,7 @@ const renderComments = (post_id) => {
             if (res.comments !== undefined) {
                 res.comments.forEach(commentData => {
                     commentBlock.innerHTML += `
-                <div>    
+                <div class="mb-4 mt-4 commentsBoxes">    
                     <h4>${commentData.title}</h3>
                     <span> ${commentData.date}</span>
                     <p> ${commentData.body}</p>
@@ -89,20 +167,14 @@ const renderComments = (post_id) => {
 
                 })
             } else {
-                commentBlock.innerHTML = `<p>No comments! Be the first one to comment!</p>`
+                commentBlock.innerHTML += `<p>No comments! Be the first one to comment!</p>`
             }
         })
 }
 
-
-//GENERATE FORM IN RENDER COMMENTS
-const commentForm = () => {
-
-}
-
-
 exports = {
     renderPosts,
     submitPost,
-    renderComments
+    renderComments,
+    submitEmojisReactions
 } 

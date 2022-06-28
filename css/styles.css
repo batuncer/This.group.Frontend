@@ -233,6 +233,15 @@ svg {
     color: white;
 }
 
+/* COMMENT BOXES */
+
+.commentsBoxes {
+    border: 2px solid black;
+    border-radius: 6px;
+    color: white;
+    background-color: rgb(138, 145, 179);;
+}
+
 
 footer {
     position: fixed;

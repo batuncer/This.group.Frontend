@@ -46,9 +46,31 @@ form.addEventListener('submit', submitPost)
 
 // COMMENTS SESSION 
 postBox.addEventListener('click', (e) => {
+
     if (e.target.className === 'post-btns-comment') {
-        const postId = e.target.id
+        const postId = parseInt(e.target.id)
         renderComments(postId)
+    }
+
+    if (e.target.className === 'comment-post') {
+        const postId = parseInt(e.target.id)
+        submitCommentPost(postId)
+    }
+
+    if (e.target.className === 'post-icons smile') {
+        const postId = parseInt(e.target.id)
+        const icon = 'smile'
+        submitEmojisReactions(icon, postId)
+      
+    } else if (e.target.className === 'post-icons likes') {
+        const postId = parseInt(e.target.id)
+        const icon = 'likes'
+        submitEmojisReactions(icon, postId)
+      
+    } else if (e.target.className === 'post-icons happy') {
+        const postId = parseInt(e.target.id)
+        const icon = 'happy'
+        submitEmojisReactions(icon, postId)
     }
 })
 
