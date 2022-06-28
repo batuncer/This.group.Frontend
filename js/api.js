@@ -60,15 +60,10 @@ const submitPost = (e) => {
             console.log(res)
             location.reload()
         })
-
-
-
 }
 
 
 exports = {
-
     renderPosts,
     submitPost
-
 } 
