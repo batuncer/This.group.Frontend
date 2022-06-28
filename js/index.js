@@ -1,6 +1,8 @@
 const form = document.getElementById('form')
 const listAllGifs = document.querySelector('#render_gifs_list');
-const grab_giphy = document.querySelector('#render_giphy')
+const grab_giphy = document.querySelector('#render_giphy');
+const postBox = document.querySelector('#render-posts')
+
 
 const submitGifSearch = document.querySelector('#submit_search_giphy');
 const apiKey = 'rQYB70wWlBOocUdHVWOssNcEL7BVMjGy'
@@ -35,8 +37,23 @@ submitGifSearch.addEventListener('click', (e) => {
         })
 })
 
-
+// RENDER ALL POSTS AS SOON AS HTML STARTS
 renderPosts()
+
+
+// FUNCTION FOR POST DATA
 form.addEventListener('submit', submitPost)
+
+// COMMENTS SESSION 
+postBox.addEventListener('click', (e) => {
+    console.log(e.target)
+    if (e.target.className === 'post-btns-comment') {
+        const postId = e.target.id
+        renderComments(postId)
+    }
+})
+
+
+
 
 
