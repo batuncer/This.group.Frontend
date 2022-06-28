@@ -1,3 +1,5 @@
+
+// RENDER ALL POSTS BOXES
 const renderPosts = async () => {
     await fetch('https://community-blog-server.herokuapp.com/api/blog')
         .then(response => response.json())
@@ -13,7 +15,7 @@ const renderPosts = async () => {
                     <p>${data.body}</p>
                     <img class="giphy-img mb-2 mt-2 gifima" type="image" src="${data.gif}" width="100%" height="350">
                 </div>
-                <div class="post-btns">
+                <div class="post-btns mb-3 mt-3">
                     <div class="post-btns-icons">
                         <span class="post-icons" id="like">👍</span>
                         <span class="post-icons" id="smile">😊</span>
@@ -22,12 +24,12 @@ const renderPosts = async () => {
 
                     <div id="${data.id}" class="post-btns-comment">Comments</div>
                 </div>
-                <div id="render_comments_${data.id}" class="mt-4 mb-2 bg-light" style="display: none"></div>
+                <div id="render_comments_${data.id}" class="mt-4 mb-2 bg-light"></div>
             </div>`
         }))
 }
 
-
+// SUBMIT POST
 const submitPost = (e) => {
 
     e.preventDefault();
@@ -43,7 +45,7 @@ const submitPost = (e) => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
 
-    const newToday = hours +" "+ yyyy + '-' + mm + '-' + dd;
+    const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
 
 
     fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
@@ -65,6 +67,9 @@ const submitPost = (e) => {
         })
 }
 
+
+
+// RENDER COMMENTS BELOW EACH POST
 const renderComments = (post_id) => {
 
     const commentBlock = document.querySelector(`#render_comments_${post_id}`);
@@ -72,19 +77,25 @@ const renderComments = (post_id) => {
 
     fetch(`https://community-blog-server.herokuapp.com/api/blog/${post_id}`)
         .then(response => response.json())
-        .then(res => res.comments.forEach(commentData => {
-        
-            commentBlock.innerHTML += `
-            
-            <h4>${commentData.title}</h3>
-            <span> ${commentData.date}</span>
-            <p> ${commentData.body}</p>
-           
+        .then(res => {
+            if (res.comments !== undefined) {
+                res.comments.forEach(commentData => {
+                    commentBlock.innerHTML += `
+                <div>    
+                    <h4>${commentData.title}</h3>
+                    <span> ${commentData.date}</span>
+                    <p> ${commentData.body}</p>
+                </div>`
 
-            `
-        }))
+                })
+            } else {
+                commentBlock.innerHTML = `<p>No comments! Be the first one to comment!</p>`
+            }
+        })
 }
 
+
+//GENERATE FORM IN RENDER COMMENTS
 const commentForm = () => {
 
 }
