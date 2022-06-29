@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ",
+    "test": "jest --coverage",
     "coverage": "jest --coverage --silent",
-    "dev": "watchify ./js/api.js -o bundle.js"
+    "dev": "watchify ./js/api.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "jest-environment-jsdom": "^28.1.1",
     "jest-fetch-mock": "^3.0.3"
   }

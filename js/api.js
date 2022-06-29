@@ -1,11 +1,12 @@
+
 const renderPosts = async () => {
+
     await fetch('https://community-blog-server.herokuapp.com/api/blog')
         .then(response => response.json())
         .then(res => res.forEach(data => {
             const renderPost = document.querySelector('#render-posts');
 
-            renderPost.innerHTML += `
-            
+        renderPost.innerHTML += `
             <div class="posts-box">
                 <div>
                     <h3>${data.title}</h3>
@@ -26,10 +27,11 @@ const renderPosts = async () => {
                
                 </div>
             </div>`
-        }))
+    }))
+
 }
 
-
+//console.log(renderPosts)
 const submitPost = (e) => {
 
     e.preventDefault();
@@ -45,7 +47,7 @@ const submitPost = (e) => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
 
-    const newToday = hours +" "+ yyyy + '-' + mm + '-' + dd;
+    const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
 
 
     fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
@@ -74,7 +76,7 @@ const renderComments = (post_id) => {
     fetch(`https://community-blog-server.herokuapp.com/api/blog/${post_id}`)
         .then(response => response.json())
         .then(res => res.comments.forEach(commentData => {
-        
+
             const commentBlock = document.querySelector(`#render_comments_${post_id}`);
             commentBlock.innerHTML += `
             
@@ -87,13 +89,14 @@ const renderComments = (post_id) => {
         }))
 }
 
-const commentForm = () => {
+// const commentForm = () => {
 
-}
+// }
 
 
 module.exports = {
     renderPosts,
     submitPost,
     renderComments
+ 
 } 
