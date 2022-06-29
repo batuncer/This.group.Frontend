@@ -177,7 +177,7 @@ const renderComments = (post_id) => {
         })
 }
 
-exports = {
+module.exports = {
     renderPosts,
     submitPost,
     renderComments,
