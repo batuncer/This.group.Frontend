@@ -100,6 +100,7 @@ textarea:hover {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: 12px;
     padding: 0;
     margin: 0;
 }
@@ -120,7 +121,7 @@ svg {
 .form-btns {
     background-color: transparent;
     color: black;
-    border: 3px solid black;
+    border: 3px solid rgba(24, 22, 22, 0.7) ;
     border-radius: 5px;
     padding: 4px;
     text-align: center;
@@ -239,7 +240,29 @@ svg {
     border: 2px solid black;
     border-radius: 6px;
     color: white;
-    background-color: rgb(138, 145, 179);;
+    padding: 12px;
+    background-color: rgb(138, 145, 179);
+}
+
+.commentTitle {
+    margin: 0;
+}
+
+.commentDate{
+    font-size: small;
+    margin: 0;
+}
+
+.commentBtnPost {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.commentBtnPost:hover {
+    transition: 0.3s;
+    text-shadow: 1px 1px #948989;
+    font-weight: bolder;
+    text-decoration: underline;
 }
 
 

@@ -126,19 +126,19 @@ const commentForm = (post_id) => {
 
     return `
             <div>
-                <div>Make a comment!</div>
+                <div>
+                    <h2>Make a comment!</h2>
+                </div>
                 <div>
                     <form id="">
                         <div class="">
                             <div class="form-box-inputs">
-                                <input id="comment_title" class="form-control" type="text" name="title" placeholder="Title"/>
+                                <input id="comment_title" class="" type="text" name="title" placeholder="Title"/>
                                 <br>
-                                <textarea id="comment_body" class="form-control" name="postarea" rows="4" placeholder="Comment here!"></textarea>
+                                <textarea id="comment_body" class="" name="postarea" rows="4" placeholder="Comment here!"></textarea>
                             </div>
-                            <div class="">
-                                <div class="">
-                                    <buttom id="${post_id}" class="comment-post" type="submit">Comment</buttom>
-                                </div>
+                            <div class="commentBtnPost mt-2 mb-2"> 
+                                <buttom id="${post_id}" class="comment-post" type="submit">Comment</buttom>
                             </div>
                         </div>
                     </form>
@@ -159,10 +159,15 @@ const renderComments = (post_id) => {
             if (res.comments !== undefined) {
                 res.comments.forEach(commentData => {
                     commentBlock.innerHTML += `
-                <div class="mb-4 mt-4 commentsBoxes">    
-                    <h4>${commentData.title}</h3>
-                    <span> ${commentData.date}</span>
-                    <p> ${commentData.body}</p>
+                <div class="mb-4 mt-4 commentsBoxes">
+                    <div>    
+                        <h4 class="commentTitle">${commentData.title}</h4>
+                        <span class="text-muted commentDate"> ${commentData.date}</span>
+                    </div>
+                    <br>
+                    <div>
+                        <p>${commentData.body}</p>
+                    </div>
                 </div>`
 
                 })
