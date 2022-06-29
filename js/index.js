@@ -12,6 +12,8 @@ const apiKey = 'rQYB70wWlBOocUdHVWOssNcEL7BVMjGy'
 submitGifSearch.addEventListener('click', (e) => {
 
     const searchGifInput = document.querySelector('#search_input').value;
+    document.querySelector('#modal_footer').style.display = 'block'
+    render_giphy.innerHTML = ''
 
     fetch(`https://api.giphy.com/v1/gifs/search?q=${searchGifInput}&api_key=${apiKey}&&limit=12`)
         .then(res => res.json())

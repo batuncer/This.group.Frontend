@@ -55,7 +55,7 @@ const submitPost = (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 7,
+            "id": 3,
             "date": `"${newToday}"`,
             "title": `${title.value}`,
             "body": `${body.value}`,
@@ -88,7 +88,7 @@ const submitCommentPost = (post_id) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 1.3,
+            "id": 3.1,
             "date": `"${newToday}"`,
             "title": `${commentTitle}`,
             "body": `${commentBody}`
