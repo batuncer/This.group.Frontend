@@ -1,3 +1,12 @@
+const globalIdMaker = {}
+
+const getRecentId = (e) => {
+    fetch('https://community-blog-server.herokuapp.com/api/blog')
+        .then(response => response.json())
+        .then(res => { globalIdMaker.id = res.length })
+}
+
+
 
 // RENDER ALL POSTS BOXES
 const renderPosts = async () => {
@@ -55,17 +64,32 @@ const submitPost = (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 13,
+            "id": globalIdMaker.id + 1,
             "date": `"${newToday}"`,
             "title": `${title.value}`,
             "body": `${body.value}`,
-            "gif": `${gif}`
+            "gif": `${gif}`,
+            "emojis": {
+                "likes": 0,
+                "smile": 0,
+                "happy": 0
+            },
+            "comments": [
+                {
+                    "id": null,
+                    "date": "",
+                    "title": "",
+                    "body": ""
+                },
+            ]
         }),
     }).then(res => res.json())
         .then(res => {
             console.log(res)
         })
 }
+
+console.log(globalIdMaker)
 
 const submitCommentPost = (post_id) => {
 
@@ -88,14 +112,14 @@ const submitCommentPost = (post_id) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 3.1,
+            "id": 1.4,
             "date": `"${newToday}"`,
             "title": `${commentTitle}`,
             "body": `${commentBody}`
         }),
     }).then(res => res.json())
         .then(res => {
-            console.log(res)
+            //renderJustPostedComments(res)
         })
 
 }
@@ -146,6 +170,24 @@ const commentForm = (post_id) => {
             </div>`
 }
 
+const renderJustPostedComments = (res) => {
+
+    const commentBlock = document.querySelector(".commentsBoxes");
+
+    commentBlock.innerHTML += `
+                <div class="mb-4 mt-4 commentsBoxes">
+                    <div>    
+                        <h4 class="commentTitle">${res.title}</h4>
+                        <span class="text-muted commentDate"> ${res.date}</span>
+                    </div>
+                    <br>
+                    <div>
+                        <p>${res.body}</p>
+                    </div>
+                </div>`
+
+}
+
 // RENDER COMMENTS BELOW EACH POST
 const renderComments = (post_id) => {
 
@@ -178,8 +220,10 @@ const renderComments = (post_id) => {
 }
 
 module.exports = {
+    getRecentId,
     renderPosts,
     submitPost,
     renderComments,
+    submitCommentPost,
     submitEmojisReactions
 } 

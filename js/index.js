@@ -1,7 +1,7 @@
-const form = document.getElementById('form')
+const form = document.getElementById('form');
 const listAllGifs = document.querySelector('#render_gifs_list');
 const grab_giphy = document.querySelector('#render_giphy');
-const postBox = document.querySelector('#render-posts')
+const postBox = document.querySelector('#render-posts');
 
 
 const submitGifSearch = document.querySelector('#submit_search_giphy');
@@ -39,6 +39,9 @@ submitGifSearch.addEventListener('click', (e) => {
             }
         })
 })
+
+// GET LENGTH DATABASE
+getRecentId()
 
 // RENDER ALL POSTS AS SOON AS HTML STARTS
 renderPosts()
