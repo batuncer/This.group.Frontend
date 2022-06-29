@@ -12,6 +12,8 @@ const apiKey = 'rQYB70wWlBOocUdHVWOssNcEL7BVMjGy'
 submitGifSearch.addEventListener('click', (e) => {
 
     const searchGifInput = document.querySelector('#search_input').value;
+    document.querySelector('#modal_footer').style.display = 'block'
+    render_giphy.innerHTML = ''
 
     fetch(`https://api.giphy.com/v1/gifs/search?q=${searchGifInput}&api_key=${apiKey}&&limit=12`)
         .then(res => res.json())
@@ -46,10 +48,31 @@ form.addEventListener('submit', submitPost)
 
 // COMMENTS SESSION 
 postBox.addEventListener('click', (e) => {
-    console.log(e.target)
+
     if (e.target.className === 'post-btns-comment') {
-        const postId = e.target.id
+        const postId = parseInt(e.target.id)
         renderComments(postId)
+    }
+
+    if (e.target.className === 'comment-post') {
+        const postId = parseInt(e.target.id)
+        submitCommentPost(postId)
+    }
+
+    if (e.target.className === 'post-icons smile') {
+        const postId = parseInt(e.target.id)
+        const icon = 'smile'
+        submitEmojisReactions(icon, postId)
+
+    } else if (e.target.className === 'post-icons likes') {
+        const postId = parseInt(e.target.id)
+        const icon = 'likes'
+        submitEmojisReactions(icon, postId)
+
+    } else if (e.target.className === 'post-icons happy') {
+        const postId = parseInt(e.target.id)
+        const icon = 'happy'
+        submitEmojisReactions(icon, postId)
     }
 })
 
