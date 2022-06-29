@@ -13,7 +13,7 @@ submitGifSearch.addEventListener('click', (e) => {
 
     const searchGifInput = document.querySelector('#search_input').value;
     document.querySelector('#modal_footer').style.display = 'block'
-    render_giphy.innerHTML = ''
+    listAllGifs.innerHTML = ''
 
     fetch(`https://api.giphy.com/v1/gifs/search?q=${searchGifInput}&api_key=${apiKey}&&limit=12`)
         .then(res => res.json())
@@ -29,7 +29,7 @@ submitGifSearch.addEventListener('click', (e) => {
             const giphysAll = document.querySelectorAll('.giphy-img');
             for (const listAll of giphysAll) {
                 listAll.addEventListener('click', (e) => {
-                    render_giphy.innerHTML = `
+                    grab_giphy.innerHTML = `
 
                     <img class="giphy-img mb-2 mt-2 gifima" type="image" src="${e.path[0].attributes[2].nodeValue}" width="100%" height="350">
 
