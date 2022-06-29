@@ -66,17 +66,20 @@ postBox.addEventListener('click', (e) => {
     if (e.target.className === 'post-icons smile') {
         const postId = parseInt(e.target.id)
         const icon = 'smile'
-        submitEmojisReactions(icon, postId)
+        const quantity = parseInt(e.path[0].childNodes[1].innerText)
+        submitEmojisReactions(postId, icon, quantity)
 
     } else if (e.target.className === 'post-icons likes') {
         const postId = parseInt(e.target.id)
         const icon = 'likes'
-        submitEmojisReactions(icon, postId)
+        const quantity = parseInt(e.path[0].childNodes[1].innerText)
+        submitEmojisReactions(postId, icon, quantity)
 
     } else if (e.target.className === 'post-icons happy') {
         const postId = parseInt(e.target.id)
         const icon = 'happy'
-        submitEmojisReactions(icon, postId)
+        const quantity = parseInt(e.path[0].childNodes[1].innerText)
+        submitEmojisReactions(postId, icon, quantity)
     }
 })
 

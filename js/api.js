@@ -26,9 +26,9 @@ const renderPosts = async () => {
                 </div>
                 <div class="post-btns mb-3 mt-3 footerPostBox">
                         <div class="post-btns-icons">
-                            <span class="post-icons likes" id="${data.id}">👍 <span style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0].quantity : '0'}</span></span>
-                            <span class="post-icons smile" id="${data.id}">😊 <span style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1].quantity : '0'}</span></span>
-                            <span class="post-icons happy" id="${data.id}">😂 <span style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2].quantity : '0'}</span></span>
+                            <span class="post-icons likes" id="${data.id}">👍 <span id="qty" style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0] : '0'}</span></span>
+                            <span class="post-icons smile" id="${data.id}">😊 <span id="qty" style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1] : '0'}</span></span>
+                            <span class="post-icons happy" id="${data.id}">😂 <span id="qty" style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2] : '0'}</span></span>
                         </div>
 
                         <div id="${data.id}" class="post-btns-comment">Comments</div>
@@ -74,14 +74,7 @@ const submitPost = (e) => {
                 "smile": 0,
                 "happy": 0
             },
-            "comments": [
-                {
-                    "id": null,
-                    "date": "",
-                    "title": "",
-                    "body": ""
-                },
-            ]
+            "comments": []
         }),
     }).then(res => res.json())
         .then(res => {
@@ -124,7 +117,11 @@ const submitCommentPost = (post_id) => {
 
 }
 
-const submitEmojisReactions = (icon, postId) => {
+const submitEmojisReactions = (postId, icon, quantity) => {
+
+    console.log(postId)
+    console.log(icon)
+    console.log(quantity)
 
     fetch("https://community-blog-server.herokuapp.com/api/updateEmoji", {
         method: 'POST',
@@ -135,7 +132,8 @@ const submitEmojisReactions = (icon, postId) => {
         body: JSON.stringify({
             "id": postId,
             "emoji": {
-                "likes": 3,
+                "name": icon,
+                "quantity": quantity
             }
         }),
     }).then(res => res.json())
