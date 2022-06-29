@@ -117,11 +117,11 @@ textarea {
     border: none !important;
     outline: none;
 }
-.form-box-inputs input:hover,
+/* .form-box-inputs input:hover,
 textarea:hover {
     border: 3px solid rgb(255, 183, 40);
     transition-duration: 0.4s;
-}
+} */
 
 .form-box-btns {
     display: flex;
