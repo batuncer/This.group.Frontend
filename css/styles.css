@@ -59,10 +59,7 @@ aside {
     margin-top: 0px;
     min-height: 0px;
     min-width: 0px;
-    padding-bottom: 2px;
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-top: 2px;
+    padding: 2.4rem;
     position: relative;
     z-index: 0;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
@@ -147,7 +144,7 @@ svg {
 
 .posts-box {
     margin: 1rem 0;
-    padding: 12px;
+    padding: 2.4rem;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
     background-color: rgb(255, 183, 40);
 }
