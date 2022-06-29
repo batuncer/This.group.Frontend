@@ -9,22 +9,22 @@ const renderPosts = async () => {
             renderPost.innerHTML += `
             
             <div id="${data.id}" class="posts-box">
-                <div>
+                <div class="bodyPostBox">
                     <h3>${data.title}</h3>
                     <span>${data.date}</span>
                     <p>${data.body}</p>
                     <img class="giphy-img mb-2 mt-2 gifima" type="image" src="${data.gif}" width="100%" height="350">
                 </div>
-                <div class="post-btns mb-3 mt-3">
-                    <div class="post-btns-icons">
-                        <span class="post-icons likes" id="${data.id}">👍</span>
-                        <span class="post-icons smile" id="${data.id}">😊</span>
-                        <span class="post-icons happy" id="${data.id}">😂</span>
-                    </div>
+                <div class="post-btns mb-3 mt-3 footerPostBox">
+                        <div class="post-btns-icons">
+                            <span class="post-icons likes" id="${data.id}">👍</span>
+                            <span class="post-icons smile" id="${data.id}">😊</span>
+                            <span class="post-icons happy" id="${data.id}">😂</span>
+                        </div>
 
-                    <div id="${data.id}" class="post-btns-comment">Comments</div>
-                </div>
-                <div id="render_comments_${data.id}" class="mt-4 mb-2"></div>
+                        <div id="${data.id}" class="post-btns-comment">Comments</div>
+                    </div>
+                <div id="render_comments_${data.id}" class="renderedCommentsSession mt-4 mb-2"></div>     
             </div>`
         }))
 }
@@ -55,7 +55,7 @@ const submitPost = (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 3,
+            "id": 13,
             "date": `"${newToday}"`,
             "title": `${title.value}`,
             "body": `${body.value}`,
@@ -125,11 +125,11 @@ const submitEmojisReactions = (icon, postId) => {
 const commentForm = (post_id) => {
 
     return `
-            <div>
+            <div class="bodyPostBox">
                 <div>
                     <h2>Make a comment!</h2>
                 </div>
-                <div>
+                <div class="">
                     <form id="">
                         <div class="">
                             <div class="form-box-inputs">

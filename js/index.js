@@ -63,12 +63,12 @@ postBox.addEventListener('click', (e) => {
         const postId = parseInt(e.target.id)
         const icon = 'smile'
         submitEmojisReactions(icon, postId)
-      
+
     } else if (e.target.className === 'post-icons likes') {
         const postId = parseInt(e.target.id)
         const icon = 'likes'
         submitEmojisReactions(icon, postId)
-      
+
     } else if (e.target.className === 'post-icons happy') {
         const postId = parseInt(e.target.id)
         const icon = 'happy'
