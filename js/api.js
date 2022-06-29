@@ -26,9 +26,9 @@ const renderPosts = async () => {
                 </div>
                 <div class="post-btns mb-3 mt-3 footerPostBox">
                         <div class="post-btns-icons">
-                            <span class="post-icons likes" id="${data.id}">👍 <span style='color:whitesmoke;'>${data.emoji ? data.emoji.likes : '0'}</span></span>
-                            <span class="post-icons smile" id="${data.id}">😊 <span style='color:whitesmoke;'>${data.emoji ? data.emoji.smile : '0'}</span></span>
-                            <span class="post-icons happy" id="${data.id}">😂 <span style='color:whitesmoke;'>${data.emoji ? data.emoji.happy : '0'}</span></span>
+                            <span class="post-icons likes" id="${data.id}">👍 <span style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0].quantity : '0'}</span></span>
+                            <span class="post-icons smile" id="${data.id}">😊 <span style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1].quantity : '0'}</span></span>
+                            <span class="post-icons happy" id="${data.id}">😂 <span style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2].quantity : '0'}</span></span>
                         </div>
 
                         <div id="${data.id}" class="post-btns-comment">Comments</div>
