@@ -21,7 +21,8 @@ submitGifSearch.addEventListener('click', (e) => {
             response.data.forEach(data => {
                 listAllGifs.innerHTML += `
         
-                <input class="giphy-img" type="image" src="https://media0.giphy.com/media/${data.id}/giphy.gif?cid=ecf05e47lmco04g3zlrnwqck76d72v0t69ag28j0g0s1vhls&amp;rid=giphy.gif&amp;ct=g" width="120" height="120">
+                <input class="giphy-img" type="image" src="https://media0.giphy.com/media/${data.id}/giphy.gif?cid=ecf05e47lmco04g3zlrnwqck76d72v0t69ag28j0g0s1vhls&amp;rid=giphy.gif&amp;ct=g" width="120" height="120" data-bs-dismiss="modal"
+                aria-label="Close">
 
                 `
             })
