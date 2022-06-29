@@ -1,0 +1,33 @@
+{
+  "name": "this.group.frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest ",
+    "coverage": "jest --coverage --silent",
+    "dev": "watchify ./js/api.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batuncer/This.group.Frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/batuncer/This.group.Frontend/issues"
+  },
+  "homepage": "https://github.com/batuncer/This.group.Frontend#readme",
+  "devDependencies": {
+    "coveralls": "^3.1.1",
+    "jest": "^28.1.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^28.1.1",
+    "jest-fetch-mock": "^3.0.3"
+  }
+}
