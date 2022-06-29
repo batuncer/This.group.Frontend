@@ -117,29 +117,27 @@ const submitCommentPost = (post_id) => {
 
 }
 
-const submitEmojisReactions = (postId, icon, quantity) => {
+const submitEmojisReactions = (postId, index, quantity) => {
 
     console.log(postId)
-    console.log(icon)
+    console.log(index)
     console.log(quantity)
 
-    fetch("https://community-blog-server.herokuapp.com/api/updateEmoji", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "id": postId,
-            "emoji": {
-                "name": icon,
-                "quantity": quantity
-            }
-        }),
-    }).then(res => res.json())
-        .then(res => {
-            console.log(res)
-        })
+    // fetch("https://community-blog-server.herokuapp.com/api/updateEmoji", {
+    //     method: 'PUT',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+
+    //         "emoji": [ quantity ]
+
+    //     }),
+    // }).then(res => res.json())
+    //     .then(res => {
+    //         console.log(res)
+    //     })
 
 }
 
