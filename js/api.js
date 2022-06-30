@@ -1,14 +1,3 @@
-const globalIdMaker = {}
-
-const getRecentId = (e) => {
-    fetch('https://community-blog-server.herokuapp.com/api/blog/')
-        .then(response => response.json())
-        .then(res => {
-            globalIdMaker.postId = res.length
-        })
-}
-
-console.log(globalIdMaker)
 
 // RENDER ALL POSTS BOXES
 const renderPosts = async () => {
@@ -46,44 +35,54 @@ const submitPost = (e) => {
 
     e.preventDefault();
 
-    const title = document.getElementById("title")
-    const body = document.getElementById("post-context")
-    const gif = document.querySelector('.giphy-img').src
-
-    const today = new Date();
-    const d = new Date()
-    const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-
-    const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
-
-
-    fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "id": globalIdMaker.id + 1,
-            "date": `"${newToday}"`,
-            "title": `${title.value}`,
-            "body": `${body.value}`,
-            "gif": `${gif}`,
-            "emoji": [
-                0,
-                0,
-                0
-            ],
-            "comments": []
-        }),
-    }).then(res => res.json())
+    fetch('https://community-blog-server.herokuapp.com/api/blog')
+        .then(response => response.json())
         .then(res => {
-            console.log(res)
+            const newPostId = res.length
+
+            const title = document.getElementById("title")
+            const body = document.getElementById("post-context")
+            const gif = document.querySelector('.giphy-img').src
+
+            const today = new Date();
+            const d = new Date()
+            const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+
+            const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
+
+
+            fetch("https://community-blog-server.herokuapp.com/api/createBlogEntry", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "id": newPostId + 1,
+                    "date": `"${newToday}"`,
+                    "title": `${title.value}`,
+                    "body": `${body.value}`,
+                    "gif": `${gif}`,
+                    "emoji": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "comments": []
+                }),
+            }).then(res => res.json())
+                .then(res => {
+                    console.log(res)
+                    location.reload()
+                })
+
         })
 }
+
+
 
 
 
@@ -124,7 +123,8 @@ const submitCommentPost = (post_id) => {
             }).then(res => res.json())
                 .then(res => {
                     console.log(res)
-                    //renderJustPostedComments(res)
+                    //renderJustPostedComments(post_id, res)
+                    renderComments(post_id)
                 })
         })
 
@@ -202,23 +202,28 @@ const commentForm = (post_id) => {
             </div>`
 }
 
-const renderJustPostedComments = (res) => {
+// GONNA KEEP THIS JUST IN CASE BUT WE DONT NEED THIS ANYMORE ONCE IM CALLING THE MAIN RENDER COMMENT FUNCTION
 
-    const commentBlock = document.querySelector(".commentsBoxes");
+// const renderJustPostedComments = (postId, res) => {
 
-    commentBlock.innerHTML += `
-                <div class="mb-4 mt-4 commentsBoxes">
-                    <div>    
-                        <h4 class="commentTitle">${res.title}</h4>
-                        <span class="text-muted commentDate"> ${res.date}</span>
-                    </div>
-                    <br>
-                    <div>
-                        <p>${res.body}</p>
-                    </div>
-                </div>`
 
-}
+//     const commentBlock = document.querySelector(`#render_comments_${postId}`);
+
+//     commentBlock.innerHTML += `
+//             <div class="mb-4 mt-4 commentsBoxes">
+//                 <div>
+//                     <div>    
+//                         <h4 class="commentTitle">${res.title}</h4>
+//                         <span class="text-muted commentDate"> ${res.date}</span>
+//                     </div>
+//                     <br>
+//                     <div>
+//                         <p>${res.body}</p>
+//                     </div>
+//                 </div>
+//             </div>`
+
+// }
 
 // RENDER COMMENTS BELOW EACH POST
 const renderComments = (post_id) => {
@@ -252,7 +257,6 @@ const renderComments = (post_id) => {
 }
 
 module.exports = {
-    getRecentId,
     renderPosts,
     submitPost,
     renderComments,
