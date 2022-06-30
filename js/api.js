@@ -1,12 +1,15 @@
 const globalIdMaker = {}
+const commentsIdGenerator = {}
 
 const getRecentId = (e) => {
-    fetch('https://community-blog-server.herokuapp.com/api/blog')
+    fetch('https://community-blog-server.herokuapp.com/api/blog/')
         .then(response => response.json())
-        .then(res => { globalIdMaker.id = res.length })
+        .then(res => {
+            globalIdMaker.postId = res.length
+        })
 }
 
-
+console.log(globalIdMaker)
 
 // RENDER ALL POSTS BOXES
 const renderPosts = async () => {
@@ -26,9 +29,9 @@ const renderPosts = async () => {
                 </div>
                 <div class="post-btns mb-3 mt-3 footerPostBox">
                         <div class="post-btns-icons">
-                            <span class="post-icons likes" id="${data.id}">👍 <span id="qty" style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0] : '0'}</span></span>
-                            <span class="post-icons smile" id="${data.id}">😊 <span id="qty" style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1] : '0'}</span></span>
-                            <span class="post-icons happy" id="${data.id}">😂 <span id="qty" style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2] : '0'}</span></span>
+                            <span class="post-icons likes" id="${data.id}">👍 <span id="zero" style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0] : '0'}</span></span>
+                            <span class="post-icons smile" id="${data.id}">😊 <span id="first" style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1] : '0'}</span></span>
+                            <span class="post-icons happy" id="${data.id}">😂 <span id="second" style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2] : '0'}</span></span>
                         </div>
 
                         <div id="${data.id}" class="post-btns-comment">Comments</div>
@@ -69,11 +72,11 @@ const submitPost = (e) => {
             "title": `${title.value}`,
             "body": `${body.value}`,
             "gif": `${gif}`,
-            "emojis": {
-                "likes": 0,
-                "smile": 0,
-                "happy": 0
-            },
+            "emoji": [
+                0,
+                0,
+                0
+            ],
             "comments": []
         }),
     }).then(res => res.json())
@@ -82,9 +85,21 @@ const submitPost = (e) => {
         })
 }
 
-console.log(globalIdMaker)
+
 
 const submitCommentPost = (post_id) => {
+
+    fetch(`https://community-blog-server.herokuapp.com/api/blog/${post_id}`)
+        .then(response => response.json())
+        .then(res => {
+
+            const commentLength = res.comments.length;
+            const fixedDecimalId = res.comments[commentLength - 1].id + .1;
+            commentsIdGenerator.commentsId = +fixedDecimalId.toFixed(1)
+
+        })
+
+    console.log(commentsIdGenerator.commentsId)
 
     const commentTitle = document.querySelector('#comment_title').value
     const commentBody = document.querySelector('#comment_body').value
@@ -105,13 +120,14 @@ const submitCommentPost = (post_id) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "id": 1.4,
+            "id": commentsIdGenerator.commentsId,
             "date": `"${newToday}"`,
             "title": `${commentTitle}`,
             "body": `${commentBody}`
         }),
     }).then(res => res.json())
         .then(res => {
+            console.log(res)
             //renderJustPostedComments(res)
         })
 
@@ -119,25 +135,44 @@ const submitCommentPost = (post_id) => {
 
 const submitEmojisReactions = (postId, index, quantity) => {
 
-    console.log(postId)
-    console.log(index)
-    console.log(quantity)
+    fetch(`https://community-blog-server.herokuapp.com/api/blog/${postId}`)
+        .then(response => response.json())
+        .then(res => {
 
-    // fetch("https://community-blog-server.herokuapp.com/api/updateEmoji", {
-    //     method: 'PUT',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
+            // NEW ARRAY FOR PUSH EMOJI DATA
+            const getEmojiData = []
 
-    //         "emoji": [ quantity ]
+            // LOOP THROUGH DATA FOR PUSH FRESH INSIDE NEW ARRAY
+            res.emoji.forEach(data => {
+                getEmojiData.push(data)
+            })
 
-    //     }),
-    // }).then(res => res.json())
-    //     .then(res => {
-    //         console.log(res)
-    //     })
+            //GET INDEX (EMOJI) AND ADD QTY + 1
+            getEmojiData[index] = quantity + 1
+
+            // FETCH GETTING SPECIFIC POST REQUESTED
+            fetch(`https://community-blog-server.herokuapp.com/api/updateEmoji/${postId}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(getEmojiData), // UPDATING WITH NEW DATA ARRAY
+            }).then(res => res.json())
+                .then(res => {
+                    // GETTING TAGS THAT RENDER QUANTITY OF ICONS
+                    const zero = document.querySelector('#zero');
+                    const first = document.querySelector('#first');
+                    const second = document.querySelector('#second');
+
+                    // UPDATING THEIR INNERTEXT QUANTITY
+                    zero.innerText = res['req.body'][0]
+                    first.innerText = res['req.body'][1]
+                    second.innerText = res['req.body'][2]
+                })
+        })
+
+
 
 }
 
