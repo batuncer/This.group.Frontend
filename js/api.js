@@ -15,7 +15,8 @@ console.log(globalIdMaker)
 const renderPosts = async () => {
     await fetch('https://community-blog-server.herokuapp.com/api/blog')
         .then(response => response.json())
-        .then(res => res.forEach(data => {
+        .then(res => res.reverse().forEach(data => {
+
             const renderPost = document.querySelector('#render-posts');
 
             renderPost.innerHTML += `
@@ -99,16 +100,16 @@ const submitCommentPost = (post_id) => {
 
             const commentTitle = document.querySelector('#comment_title').value
             const commentBody = document.querySelector('#comment_body').value
-        
+
             const today = new Date();
             const d = new Date()
             const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
             const dd = String(today.getDate()).padStart(2, '0');
             const mm = String(today.getMonth() + 1).padStart(2, '0');
             const yyyy = today.getFullYear();
-        
+
             const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
-        
+
             fetch("https://community-blog-server.herokuapp.com/api/createBlogComment", {
                 method: 'POST',
                 headers: {
@@ -128,9 +129,9 @@ const submitCommentPost = (post_id) => {
                 })
         })
 
-    
 
-  
+
+
 
 }
 
@@ -231,7 +232,7 @@ const renderComments = (post_id) => {
         .then(response => response.json())
         .then(res => {
             if (res.comments !== undefined) {
-                res.comments.forEach(commentData => {
+                res.comments.reverse().forEach(commentData => {
                     commentBlock.innerHTML += `
                 <div class="mb-4 mt-4 commentsBoxes">
                     <div>    
