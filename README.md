@@ -5,16 +5,10 @@
  --Installation and usage
    
    
-   Client
-   
-   
-   Navigate into the client folder
-   
-   
    Open homepage.html via live server plugin
    
    
-   Note! another way to open the file is right click and selecting Copy Path, then paste it in the browser
+  
    
 # Technologies
 
