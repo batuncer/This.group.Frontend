@@ -1,7 +1,6 @@
 
 // RENDER ALL POSTS BOXES
 const renderPosts = async () => {
-
     await fetch('https://community-blog-server.herokuapp.com/api/blog')
         .then(response => response.json())
         .then(res => res.reverse().forEach(data => {
@@ -28,13 +27,13 @@ const renderPosts = async () => {
                     </div>
                 <div id="render_comments_${data.id}" class="renderedCommentsSession mt-4 mb-2"></div>     
             </div>`
-    }))
-
+        }))
 }
 
 // SUBMIT POST
 const submitPost = (e) => {
 
+    
     e.preventDefault();
 
     fetch('https://community-blog-server.herokuapp.com/api/blog')
@@ -231,6 +230,7 @@ const commentForm = (post_id) => {
 const renderComments = (post_id) => {
 
     const commentBlock = document.querySelector(`#render_comments_${post_id}`);
+    console.log(commentBlock);
     commentBlock.innerHTML = ''
     commentBlock.innerHTML = commentForm(post_id)
 
