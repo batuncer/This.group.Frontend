@@ -63,8 +63,16 @@
             </div>
             <div class="popular-featured-links">
                 <ul>
-                    <li id="popular-links" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Most popular ones!
-                    </li>
+                    <li id="popular-links" class="orderPopular" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most popular ones!</li>
+                    <li id="popular-links" class="orderComments" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Most commented ones!</li>
+                    <li id="popular-links" class="orderHappy" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most Happy ones!</li>
+                    <li id="popular-links" class="orderSmile" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most Smiled ones!</li>
+                    <li id="popular-links" class="orderLikes" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most Liked ones!</li>
                 </ul>
             </div>
         </aside>
@@ -102,13 +110,7 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content" style="background-color: #b88962 ;">
-                <div class="modal-header">
-                    <h5 class="modal-title text-white" id="staticBackdropLabel">Most Popular Rank</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="render-populars"></div>
-                </div>
+                <div id="render-populars"></div>
             </div>
         </div>
     </div>

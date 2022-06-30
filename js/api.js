@@ -258,17 +258,24 @@ const mostPopularPosts = (e) => {
     let counter = 1
 
 
+    mostPopulars.innerHTML = `
 
-    fetch('https://community-blog-server.herokuapp.com/api/orderPopular')
+    <div class="modal-header">
+        <h5 class="modal-title text-white" id="staticBackdropLabel">${e} Rank</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>`
+
+    fetch(`https://community-blog-server.herokuapp.com/api/${e}`)
         .then(res => res.json())
         .then(res => res.reverse().forEach(popular => {
 
             mostPopulars.innerHTML += `
-        
-        <div class="mb-3 text-white">
-            <h3 data-bs-dismiss="modal" aria-label="Close"><span>#${counter++}</span> - <a style="text-decoration:none; color:white;" href="#${popular.id}">${popular.title}</a></h3>
-            <span>${popular.date}</span>
-        </div>
+            <div class="modal-body">
+                <div class="mb-3 text-white">
+                    <h3 data-bs-dismiss="modal" aria-label="Close"><span>#${counter++}</span> - <a style="text-decoration:none; color:white;" href="#${popular.id}">${popular.title}</a></h3>
+                    <span>${popular.date}</span>
+                </div>
+            </div>
         `
         }))
 }
@@ -278,5 +285,6 @@ module.exports = {
     submitPost,
     renderComments,
     submitCommentPost,
-    submitEmojisReactions
+    submitEmojisReactions,
+    mostPopularPosts
 } 

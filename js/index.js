@@ -2,7 +2,7 @@ const form = document.getElementById('form');
 const listAllGifs = document.querySelector('#render_gifs_list');
 const grab_giphy = document.querySelector('#render_giphy');
 const postBox = document.querySelector('#render-posts');
-const popularLinks = document.querySelector('#popular-links');
+const popularLinks = document.querySelectorAll('#popular-links');
 
 
 const submitGifSearch = document.querySelector('#submit_search_giphy');
@@ -46,7 +46,10 @@ submitGifSearch.addEventListener('click', (e) => {
 renderPosts()
 
 // MOST POPULAR POSTS
-popularLinks.addEventListener('click', mostPopularPosts)
+popularLinks.forEach(tag => {
+    tag.addEventListener('click', (e) => mostPopularPosts(e.target.className))
+})
+
 
 // FUNCTION FOR POST DATA
 form.addEventListener('submit', submitPost)
