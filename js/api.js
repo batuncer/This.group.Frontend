@@ -93,9 +93,15 @@ const submitCommentPost = (post_id) => {
         .then(response => response.json())
         .then(res => {
 
-            const commentLength = res.comments.length;
-            const fixedDecimalId = res.comments[commentLength - 1].id + .1;
-            const newId = +fixedDecimalId.toFixed(1)
+            let newId;
+
+            if (res.comments.id !== undefined) {
+                const commentLength = res.comments.length;
+                const fixedDecimalId = res.comments[commentLength - 1].id + .1;
+                newId = +fixedDecimalId.toFixed(1)
+            } else {
+                newId = post_id + .1
+            }
 
             const commentTitle = document.querySelector('#comment_title').value
             const commentBody = document.querySelector('#comment_body').value
