@@ -253,21 +253,24 @@ const renderComments = (post_id) => {
 
 const mostPopularPosts = (e) => {
 
-    let counter = 1
     const mostPopulars = document.querySelector('#render-populars')
+    mostPopulars.innerHTML = ''
+    let counter = 1
+
+
 
     fetch('https://community-blog-server.herokuapp.com/api/orderPopular')
-    .then(res => res.json())
-    .then(res => res.forEach(popular => {
-        
-        mostPopulars.innerHTML += `
+        .then(res => res.json())
+        .then(res => res.forEach(popular => {
+
+            mostPopulars.innerHTML += `
         
         <div class="mb-3 text-white">
-            <h3><span>#${counter++}</span> - ${popular.title}</h3>
+            <h3 data-bs-dismiss="modal" aria-label="Close"><span>#${counter++}</span> - <a style="text-decoration:none; color:white;" href="#${popular.id}">${popular.title}</a></h3>
             <span>${popular.date}</span>
         </div>
         `
-    }))
+        }))
 }
 
 module.exports = {
