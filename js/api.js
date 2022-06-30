@@ -1,5 +1,4 @@
 const globalIdMaker = {}
-const commentsIdGenerator = {}
 
 const getRecentId = (e) => {
     fetch('https://community-blog-server.herokuapp.com/api/blog/')
