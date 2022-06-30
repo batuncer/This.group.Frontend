@@ -2,6 +2,7 @@ const form = document.getElementById('form');
 const listAllGifs = document.querySelector('#render_gifs_list');
 const grab_giphy = document.querySelector('#render_giphy');
 const postBox = document.querySelector('#render-posts');
+const popularLinks = document.querySelector('#popular-links');
 
 
 const submitGifSearch = document.querySelector('#submit_search_giphy');
@@ -32,7 +33,7 @@ submitGifSearch.addEventListener('click', (e) => {
                 listAll.addEventListener('click', (e) => {
                     grab_giphy.innerHTML = `
 
-                    <img class="giphy-img mb-2 mt-2 gifima" type="image" src="${e.path[0].attributes[2].nodeValue}" width="100%" height="350">
+                    <img class="giphy-selected mb-2 mt-2 gifima" type="image" src="${e.path[0].attributes[2].nodeValue}" width="100%" height="350">
 
                     `
                 })
@@ -44,6 +45,8 @@ submitGifSearch.addEventListener('click', (e) => {
 // RENDER ALL POSTS AS SOON AS HTML STARTS
 renderPosts()
 
+// MOST POPULAR POSTS
+popularLinks.addEventListener('click', mostPopularPosts)
 
 // FUNCTION FOR POST DATA
 form.addEventListener('submit', submitPost)
