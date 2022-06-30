@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "coverage": "jest",
-    "dev": "watchify ./js/api.js"
+    "dev": "watchify ./js/api.js, ./js/index.js"
   },
   "repository": {
     "type": "git",

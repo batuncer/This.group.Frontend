@@ -1,3 +1,5 @@
+
+
 // DATING
 const today = new Date();
 const d = new Date()
@@ -223,6 +225,7 @@ const commentForm = (post_id) => {
 // RENDER COMMENTS BELOW EACH POST
 const renderComments = (post_id) => {
 
+    
     const commentBlock = document.querySelector(`#render_comments_${post_id}`);
     console.log(commentBlock);
     commentBlock.innerHTML = ''
@@ -277,5 +280,8 @@ module.exports = {
     submitPost,
     renderComments,
     submitCommentPost,
-    submitEmojisReactions
+    submitEmojisReactions,
+    commentForm,
+    mostPopularPosts,
+    
 } 

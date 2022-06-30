@@ -22,7 +22,7 @@ describe('app', () => {
         const requestMook = '[{"id":1,"date":"2022-07-25","title":"Our first community Blog Post","body":" This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology.  ","gif":"https://giphy.com/embed/3mYSRZpwbBqNu1NWNU","emoji":{"likes":3},"comments":[{"id":1.1,"date":"25/07/2022","title":"First  title ","body":" First comment body"},{"id":1.2,"date":"25/07/2022","title":"Second comment title ","body":" Secondcomment body"}]}]'
         describe("url", () => {
             test("it makes a get request url", () => {
-            
+
                 fetch.mockResponse(requestMook)
 
 
@@ -42,39 +42,90 @@ describe('app', () => {
                 app.renderPosts();
                 expect(fetch).toHaveBeenCalledTimes(1);
 
-       
+
 
             })
 
         })
+        describe("have been called", () => {
+            test("it is calling once", () => {
+                fetch.mockResponse(requestMook)
+                document.body.innerHTML = "<div id='render_comments_1'></div>";
 
-        // describe('submitPost', () => {
-            // test('it makes a post request to /post with the post data', () => {
-    
-            //     const fakeSubmitEvent = {
-            //         preventDefault: jest.fn
-            //     }
-            //     fetch.mockResponse(requestMook);
-            //     const imgGif = document.createElement('img');
-            //     imgGif.className = "giphy-img"
-            //     imgGif.src =  'https://media0.giphy.com/media/57ZvMMkuBIVMlU88Yh/giphy.gif?cid=ecf05e47lmco04g3zlrnwqck76d72v0t69ag28j0g0s1vhls&rid=giphy.gif&ct=g'
-            //     document.querySelector('#render_giphy').append(imgGif)
-         
-            //     app.submitPost(fakeSubmitEvent);
-            //     //console.log(expect(app.submitPost)).toBeCalled()
-            //     //console.log(fetch.mock.calls);
-            //     expect(app.renderPosts).toContain('')
-            //     // expect(fetch.mock.calls[0][1]).toHaveProperty('method', 'POST');
-            //     // expect(fetch.mock.calls[0][1]).toHaveProperty('body', JSON.stringify({ title: "Bob", body: "Hello how are u? " }));
-            // })
+                
+                expect(app.renderComments(1)).not.toBeNull()
+
+
+
+            })
+
         })
-        // describe('comment id' , () => {
-        //     test('there is comment id', () =>{
-        //         fetch.mockResponse('{"id":1,"date":"2022-07-25","title":"Our first community Blog Post","body":" This is the first community blog post.  This  community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology.  ","gif":"https://media2.giphy.com/media/3mYSRZpwbBqNu1NWNU/giphy.gif?cid=790b761184b61fd89868935df3ef97b82d9ca31898fe4507&rid=giphy.gif&ct=g","emoji":[3,7,4],"comments":[{"id":1.1,"date":"25/07/2022","title":"First title ","body":" First comment body"},{"id":1.2,"date":"25/07/2022","title":"Second comment title ","body":" Secondcomment body"}]}')
-        //         app.renderComments("1");
-        //         expect(document.querySelector('body').textContent).toContain('<h4 class="commentTitle">Our first community Blog Post</h4>')
-        //     })
+        describe('comment id', () => {
+            test('there is comment id', () => {
+                
+               
+                    expect(app.commentForm(1)).toMatch(/<buttom id="1" class="comment-post" type="submit">Comment/)
+                   
+            })
+        })
+        describe('comment is not null', () => {
+            test('there is comment id', () => {
+                
+                    expect(app.commentForm(1)).not.toBeNull();
+                   
+                   
+            })
+        })
+        describe('html clicks', () => {
+
+
+            // document.body.innerHTML = "<div id='render-populars'></div>";
+            //jest.mock(app.mostPopularPosts);
+            fetch.mockResponse({
+                preventDefault:jest.fn()
+            })
+            test("popularLinks click", () => {
+                
+                // app.mostPopularPosts.mockImplementation(cb =>{
+                //     cb()
+                // })
+                fetch.mockResponse(requestMook)
+                app.mostPopularPosts(jest.fn())
+                expect(document.querySelector('#render-populars')).not.toBeNull();
+    
+            })
+            
+        })
+  
+
+        
+        // describe('submitPost', () => {
+        // test('it makes a post request to /post with the post data', () => {
+
+        //     const fakeSubmitEvent = {
+        //         preventDefault: jest.fn
+        //     }
+        //     fetch.mockResponse(requestMook);
+        //     const imgGif = document.createElement('img');
+        //     imgGif.className = "giphy-img"
+        //     imgGif.src =  'https://media0.giphy.com/media/57ZvMMkuBIVMlU88Yh/giphy.gif?cid=ecf05e47lmco04g3zlrnwqck76d72v0t69ag28j0g0s1vhls&rid=giphy.gif&ct=g'
+        //     document.querySelector('#render_giphy').append(imgGif)
+
+        //     app.submitPost(fakeSubmitEvent);
+        //     //console.log(expect(app.submitPost)).toBeCalled()
+        //     //console.log(fetch.mock.calls);
+        //     expect(app.renderPosts).toContain('')
+        //     // expect(fetch.mock.calls[0][1]).toHaveProperty('method', 'POST');
+        //     // expect(fetch.mock.calls[0][1]).toHaveProperty('body', JSON.stringify({ title: "Bob", body: "Hello how are u? " }));
         // })
+    })
+    // describe('comment id' , () => {
+    //     test('there is comment id', () =>{
+    //         fetch.mockResponse('{"id":1,"date":"2022-07-25","title":"Our first community Blog Post","body":" This is the first community blog post.  This  community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology. This is the first community blog post. This community uses the latest blog technology.  ","gif":"https://media2.giphy.com/media/3mYSRZpwbBqNu1NWNU/giphy.gif?cid=790b761184b61fd89868935df3ef97b82d9ca31898fe4507&rid=giphy.gif&ct=g","emoji":[3,7,4],"comments":[{"id":1.1,"date":"25/07/2022","title":"First title ","body":" First comment body"},{"id":1.2,"date":"25/07/2022","title":"Second comment title ","body":" Secondcomment body"}]}')
+    //         app.renderComments("1");
+    //         expect(document.querySelector('body').textContent).toContain('<h4 class="commentTitle">Our first community Blog Post</h4>')
+    //     })
+    // })
 
     // })
 })

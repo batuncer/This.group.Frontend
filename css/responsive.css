@@ -20,13 +20,13 @@
         
       }
       .content {
-        display: grid;
-        margin: 2% 3%;
-        grid-template-columns: 100%;
-        padding:0;
+    
+       
         display: block!important;
         
     }
     
+
+   
 
 }
