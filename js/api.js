@@ -76,7 +76,7 @@ const submitPost = (e) => {
             }).then(res => res.json())
                 .then(res => {
                     console.log(res)
-                    renderPosts()
+                    location.reload()
                 })
 
         })
