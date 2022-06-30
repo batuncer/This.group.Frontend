@@ -62,12 +62,14 @@ describe('index.html', () => {
                 expect(form).toBeTruthy();
             })
             
-            // describe('title input', () => {
-            //     test("it has and id of 'title'", () => {
-                   
-            //     })
-            // })
+            test('it has an id of "title"', () => {
+                expect(title).toBeTruthy();
+            })
 
+            // test('it is a text input"', () => {
+            //     expect(postContext.getAttribute('type')).toBe('text')
+            // })
+    
         })
     })
 
