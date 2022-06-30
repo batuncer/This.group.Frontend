@@ -141,10 +141,6 @@ const submitEmojisReactions = (postId, index, quantity) => {
     fetch(`https://community-blog-server.herokuapp.com/api/blog/${postId}`)
         .then(response => response.json())
         .then(res => {
-<<<<<<< HEAD
-            
-            console.log(res)
-=======
 
             // NEW ARRAY FOR PUSH EMOJI DATA
             const getEmojiData = []
@@ -177,7 +173,6 @@ const submitEmojisReactions = (postId, index, quantity) => {
                     first.innerText = res['req.body'][1]
                     second.innerText = res['req.body'][2]
                 })
->>>>>>> development
         })
 
 
@@ -258,14 +253,6 @@ const renderComments = (post_id) => {
         })
 }
 
-<<<<<<< HEAD
-// module.exports = {
-//     renderPosts,
-//     submitPost,
-//     renderComments,
-//     submitEmojisReactions
-// } 
-=======
 module.exports = {
     getRecentId,
     renderPosts,
@@ -274,4 +261,3 @@ module.exports = {
     submitCommentPost,
     submitEmojisReactions
 } 
->>>>>>> development

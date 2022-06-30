@@ -182,6 +182,7 @@ svg {
     margin: 1rem 0;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
     background-color: rgb(255, 183, 40);
+    border-radius: 8px;
 }
 
 .bodyPostBox {
@@ -205,7 +206,10 @@ svg {
 .post-btns {
     display: flex;
     justify-content: space-between;
-    margin-right: 3px;
+  
+    border-radius: 30px;
+    height: 50px;
+   
 
 }
 
@@ -304,7 +308,7 @@ svg {
     margin-bottom: 12px;
     padding: 12px;
     border: 2px solid black;
-    border-radius: 6px;
+    border-radius: 16px;
     background-color: rgb(102, 105, 96);
 }
 
