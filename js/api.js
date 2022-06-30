@@ -29,9 +29,9 @@ const renderPosts = async () => {
                 </div>
                 <div class="post-btns mb-3 mt-3 footerPostBox">
                         <div class="post-btns-icons">
-                            <span class="post-icons likes" id="${data.id}">👍 <span id="zero" style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0] : '0'}</span></span>
-                            <span class="post-icons smile" id="${data.id}">😊 <span id="first" style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1] : '0'}</span></span>
-                            <span class="post-icons happy" id="${data.id}">😂 <span id="second" style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2] : '0'}</span></span>
+                            <span class="post-icons likes" id="${data.id}">👍 <span id="zero_${data.id}" style='color:whitesmoke;'>${data.emoji[0] ? data.emoji[0] : '0'}</span></span>
+                            <span class="post-icons smile" id="${data.id}">😊 <span id="first_${data.id}" style='color:whitesmoke;'>${data.emoji[1] ? data.emoji[1] : '0'}</span></span>
+                            <span class="post-icons happy" id="${data.id}">😂 <span id="second_${data.id}" style='color:whitesmoke;'>${data.emoji[2] ? data.emoji[2] : '0'}</span></span>
                         </div>
 
                         <div id="${data.id}" class="post-btns-comment">Comments</div>
@@ -161,9 +161,9 @@ const submitEmojisReactions = (postId, index, quantity) => {
             }).then(res => res.json())
                 .then(res => {
                     // GETTING TAGS THAT RENDER QUANTITY OF ICONS
-                    const zero = document.querySelector('#zero');
-                    const first = document.querySelector('#first');
-                    const second = document.querySelector('#second');
+                    const zero = document.querySelector(`#zero_${postId}`);
+                    const first = document.querySelector(`#first_${postId}`);
+                    const second = document.querySelector(`#second_${postId}`);
 
                     // UPDATING THEIR INNERTEXT QUANTITY
                     zero.innerText = res['req.body'][0]
