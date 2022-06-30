@@ -32,7 +32,7 @@ submitGifSearch.addEventListener('click', (e) => {
                 listAll.addEventListener('click', (e) => {
                     grab_giphy.innerHTML = `
 
-                    <img class="giphy-img mb-2 mt-2 gifima" type="image" src="${e.path[0].attributes[2].nodeValue}" width="100%" height="350">
+                    <img class="giphy-selected mb-2 mt-2 gifima" type="image" src="${e.path[0].attributes[2].nodeValue}" width="100%" height="350">
 
                     `
                 })
