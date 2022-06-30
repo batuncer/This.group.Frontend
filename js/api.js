@@ -95,41 +95,42 @@ const submitCommentPost = (post_id) => {
 
             const commentLength = res.comments.length;
             const fixedDecimalId = res.comments[commentLength - 1].id + .1;
-            commentsIdGenerator.commentsId = +fixedDecimalId.toFixed(1)
+            const newId = +fixedDecimalId.toFixed(1)
 
+            const commentTitle = document.querySelector('#comment_title').value
+            const commentBody = document.querySelector('#comment_body').value
+        
+            const today = new Date();
+            const d = new Date()
+            const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+        
+            const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
+        
+            fetch("https://community-blog-server.herokuapp.com/api/createBlogComment", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "id": newId,
+                    "date": `"${newToday}"`,
+                    "title": `${commentTitle}`,
+                    "body": `${commentBody}`
+                }),
+            }).then(res => res.json())
+                .then(res => {
+                    console.log(res)
+                    //renderJustPostedComments(res)
+                })
         })
 
-    console.log(commentsIdGenerator.commentsId)
+    
 
-    const commentTitle = document.querySelector('#comment_title').value
-    const commentBody = document.querySelector('#comment_body').value
-
-    const today = new Date();
-    const d = new Date()
-    const hours = String(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-
-    const newToday = hours + " " + yyyy + '-' + mm + '-' + dd;
-
-    fetch("https://community-blog-server.herokuapp.com/api/createBlogComment", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "id": commentsIdGenerator.commentsId,
-            "date": `"${newToday}"`,
-            "title": `${commentTitle}`,
-            "body": `${commentBody}`
-        }),
-    }).then(res => res.json())
-        .then(res => {
-            console.log(res)
-            //renderJustPostedComments(res)
-        })
+  
 
 }
 
