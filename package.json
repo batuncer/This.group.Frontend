@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "coverage": "jest --coverage --silent",
+    "coverage": "jest",
     "dev": "watchify ./js/api.js"
   },
   "repository": {

@@ -118,6 +118,7 @@ const submitEmojisReactions = (icon, postId) => {
         }),
     }).then(res => res.json())
         .then(res => {
+            
             console.log(res)
         })
 
@@ -179,9 +180,9 @@ const renderComments = (post_id) => {
         })
 }
 
-module.exports = {
-    renderPosts,
-    submitPost,
-    renderComments,
-    submitEmojisReactions
-} 
+// module.exports = {
+//     renderPosts,
+//     submitPost,
+//     renderComments,
+//     submitEmojisReactions
+// } 
