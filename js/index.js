@@ -40,8 +40,6 @@ submitGifSearch.addEventListener('click', (e) => {
         })
 })
 
-// GET LENGTH DATABASE
-getRecentId()
 
 // RENDER ALL POSTS AS SOON AS HTML STARTS
 renderPosts()
