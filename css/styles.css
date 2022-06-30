@@ -328,6 +328,16 @@ svg {
     text-decoration: underline;
 }
 
+/* POPULAR FEATURED BOX */
+
+.popular-featured-links ul li {
+   list-style: none;
+}
+
+.popular-featured-links li {
+    margin: 1rem 0;
+}
+
 
 footer {
     position: fixed;

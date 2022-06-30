@@ -124,7 +124,8 @@ const submitCommentPost = (post_id) => {
             }).then(res => res.json())
                 .then(res => {
                     console.log(res)
-                    //renderJustPostedComments(res)
+                    //renderJustPostedComments(post_id, res)
+                    renderComments(post_id)
                 })
         })
 
@@ -202,23 +203,28 @@ const commentForm = (post_id) => {
             </div>`
 }
 
-const renderJustPostedComments = (res) => {
+// GONNA KEEP THIS JUST IN CASE BUT WE DONT NEED THIS ANYMORE ONCE IM CALLING THE MAIN RENDER COMMENT FUNCTION
 
-    const commentBlock = document.querySelector(".commentsBoxes");
+// const renderJustPostedComments = (postId, res) => {
 
-    commentBlock.innerHTML += `
-                <div class="mb-4 mt-4 commentsBoxes">
-                    <div>    
-                        <h4 class="commentTitle">${res.title}</h4>
-                        <span class="text-muted commentDate"> ${res.date}</span>
-                    </div>
-                    <br>
-                    <div>
-                        <p>${res.body}</p>
-                    </div>
-                </div>`
 
-}
+//     const commentBlock = document.querySelector(`#render_comments_${postId}`);
+
+//     commentBlock.innerHTML += `
+//             <div class="mb-4 mt-4 commentsBoxes">
+//                 <div>
+//                     <div>    
+//                         <h4 class="commentTitle">${res.title}</h4>
+//                         <span class="text-muted commentDate"> ${res.date}</span>
+//                     </div>
+//                     <br>
+//                     <div>
+//                         <p>${res.body}</p>
+//                     </div>
+//                 </div>
+//             </div>`
+
+// }
 
 // RENDER COMMENTS BELOW EACH POST
 const renderComments = (post_id) => {
