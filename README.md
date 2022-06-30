@@ -3,12 +3,6 @@
 # Implementation
 
  --Installation and usage
- 
- 
-   Right click on the server folder and choose Open in Integrated Terminal
-   
-   
-   Run command npm start
    
    
    Client
@@ -50,7 +44,10 @@
    
    Bootstrap
    
-   
+    #Testing
    Mock testing
+   
+   
+   Jest
 
 
