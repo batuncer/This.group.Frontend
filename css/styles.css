@@ -298,7 +298,7 @@ svg {
 }
 
 .commentsBoxes {
-  
+
     color: white;
     margin-bottom: 12px;
     padding: 12px;
@@ -331,13 +331,18 @@ svg {
 /* POPULAR FEATURED BOX */
 
 .popular-featured-links ul li {
-   list-style: none;
+    list-style: none;
 }
 
 .popular-featured-links li {
     margin: 1rem 0;
+    cursor: pointer;
 }
 
+.popular-featured-links li:hover {
+    text-decoration: underline;
+    text-shadow: 1px 1px #948989;
+}
 
 footer {
     position: fixed;
