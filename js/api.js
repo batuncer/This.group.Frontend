@@ -261,7 +261,7 @@ const mostPopularPosts = (e) => {
 
     fetch('https://community-blog-server.herokuapp.com/api/orderPopular')
         .then(res => res.json())
-        .then(res => res.forEach(popular => {
+        .then(res => res.reverse().forEach(popular => {
 
             mostPopulars.innerHTML += `
         
