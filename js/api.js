@@ -33,7 +33,7 @@ const renderPosts = async () => {
 
                         <div id="${data.id}" class="post-btns-comment">Comments</div>
                     </div>
-                <div id="render_comments_${data.id}" class="renderedCommentsSession mt-4 mb-2"></div>     
+                <div style="display: none;" id="render_comments_${data.id}" class="renderedCommentsSession mt-4 mb-2"></div>     
             </div>`
         }))
 }
@@ -92,10 +92,10 @@ const submitCommentPost = (post_id) => {
     fetch(`https://community-blog-server.herokuapp.com/api/blog/${post_id}`)
         .then(response => response.json())
         .then(res => {
-
+    
             let newId;
 
-            if (res.comments.id !== undefined) {
+            if (res.comments !== undefined) {
                 const commentLength = res.comments.length;
                 const fixedDecimalId = res.comments[commentLength - 1].id + .1;
                 newId = +fixedDecimalId.toFixed(1)
