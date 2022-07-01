@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656620162948" clover="3.2.0">
-  <project timestamp="1656620162948" name="All files">
+<coverage generated="1656672014690" clover="3.2.0">
+  <project timestamp="1656672014692" name="All files">
     <metrics statements="74" coveredstatements="34" conditionals="8" coveredconditionals="4" methods="29" coveredmethods="12" elements="111" coveredelements="50" complexity="0" loc="74" ncloc="74" packages="1" files="1" classes="1"/>
     <file name="api.js" path="C:\Users\User\Desktop\Baki\this.group\This.group.Frontend\js\api.js">
       <metrics statements="74" coveredstatements="34" conditionals="8" coveredconditionals="4" methods="29" coveredmethods="12"/>
