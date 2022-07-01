@@ -123,8 +123,11 @@ const submitCommentPost = (post_id) => {
             }).then(res => res.json())
                 .then(res => {
                     console.log(res)
-                    //renderJustPostedComments(post_id, res)
+                    // RENDER ALL COMMENTS AS SOON AS ONE GET POSTED
                     renderComments(post_id)
+
+                    //SECONDARY FUNCTION RENDERING SPECIFIC COMMENT POST
+                    //renderJustPostedComments(post_id, res)
                 })
         })
 
@@ -172,9 +175,6 @@ const submitEmojisReactions = (postId, index, quantity) => {
                     second.innerText = res['req.body'][2]
                 })
         })
-
-
-
 }
 
 //GENERATE FORM IN RENDER COMMENTS
