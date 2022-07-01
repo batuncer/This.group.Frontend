@@ -1,0 +1,28 @@
+@media screen and (max-width: 992px) {
+    #big-screen-photo {
+        display: none !important;
+    }
+
+    #small-screen-photo {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #big-screen-photo {
+        display: none !important;
+    }
+
+    #small-screen-photo {
+        display: block !important;
+    }
+
+    aside {
+        display: none !important;
+    }
+
+    .content {
+        display: block !important;
+    }
+
+}
