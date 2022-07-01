@@ -47,8 +47,8 @@ describe('app', () => {
             })
 
         })
-        describe("have been called", () => {
-            test("it is calling once", () => {
+        describe("comments", () => {
+            test("comments id is null?", () => {
                 fetch.mockResponse(requestMook)
                 document.body.innerHTML = "<div id='render_comments_1'></div>";
 
