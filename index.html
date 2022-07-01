@@ -6,18 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>This.group Project</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <script src="./js/api.js"></script>
     <script defer src="./js/index.js"></script>
 
     <script src="https://kit.fontawesome.com/0fd468d4fd.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body class="container">
     <header>
-        <img src="./img/header.jpg" alt="header background">
+        <img id="big-screen-photo" src="./img/header.jpg" alt="header background">
+        <img id="small-screen-photo" src="./img/smallscreenPhoto.png" alt="small screen header">
     </header>
 
     <div class="content">
@@ -30,9 +32,11 @@
                     <div class="form-box">
                         <div class="form-box-inputs">
                             <input id="title" type="text" name="title" placeholder="Share your thoughts">
-                            <textarea id="post-context" name="postarea" rows="8"
-                                placeholder="Unwind your thoughts!"></textarea>
-                            <div id="render_giphy"></div>
+                            <textarea id="post-context" name="postarea" rows="8" placeholder="Unwind your thoughts!"
+                                maxlength="300"></textarea>
+                            <div id="render_giphy">
+                                <img class="giphy-selected" src="./img/nogif.png" style="display:none;">
+                            </div>
                         </div>
                         <div class="form-box-btns">
                             <div class="giphy-btn">
@@ -54,10 +58,24 @@
             </div>
         </section>
 
-        <aside>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure repudiandae sit architecto laudantium,
-            voluptatibus, consequatur fuga debitis dolore soluta optio nam! Distinctio, sapiente. Voluptatem, aspernatur
-            repellendus sequi accusantium dolores eligendi
+        <aside class="popular-featured">
+            <div class="popular-featured-box-title">
+                <h2>Check the most popular!</h2>
+            </div>
+            <div class="popular-featured-links">
+                <ul>
+                    <li id="popular-links" class="orderPopular" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most popular ones!</li>
+                    <li id="popular-links" class="orderComments" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Most commented ones!</li>
+                    <li id="popular-links" class="orderHappy" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most Happy ones!</li>
+                    <li id="popular-links" class="orderSmile" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most Smiled ones!</li>
+                    <li id="popular-links" class="orderLikes" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Most Liked ones!</li>
+                </ul>
+            </div>
         </aside>
     </div>
 
@@ -87,6 +105,22 @@
     </div>
     <!--END Modal -->
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="background-color: #b88962 ;">
+                <div id="render-populars"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        this.group - Community Blog
+        <br>
+        Futureproof's
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
