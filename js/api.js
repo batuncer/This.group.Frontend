@@ -95,7 +95,9 @@ const submitCommentPost = (post_id) => {
     
             let newId;
 
-            if (res.comments !== undefined) {
+            console.log(res.comments)
+
+            if (res.comments[res.comments.length - 1] !== undefined) {
                 const commentLength = res.comments.length;
                 const fixedDecimalId = res.comments[commentLength - 1].id + .1;
                 newId = +fixedDecimalId.toFixed(1)
