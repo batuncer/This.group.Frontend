@@ -59,7 +59,16 @@ postBox.addEventListener('click', (e) => {
 
     if (e.target.className === 'post-btns-comment') {
         const postId = parseInt(e.target.id)
-        renderComments(postId)
+
+        const displayBlock = document.querySelector(`#render_comments_${postId}`)
+        if (displayBlock.style.display == 'none') {
+            displayBlock.style.display = 'block'
+            renderComments(postId)
+        } else {
+            displayBlock.style.display = 'none'
+      
+        }
+
     }
 
     if (e.target.className === 'comment-post') {

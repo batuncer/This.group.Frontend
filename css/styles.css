@@ -345,10 +345,12 @@ svg {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 81%;
-    background-color: black;
-    color: white;
-    text-align: center;
+    margin-top: 128px;
+    color: #000 !important;
+    background-color: whitesmoke;
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+    text-align: center !important;
+    opacity: 0.60;
+    padding: 0.01em 16px;
 }
